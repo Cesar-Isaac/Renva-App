@@ -213,27 +213,32 @@ class Customer {
     required this.points,
     required this.pointsInSp,
   });
-
   factory Customer.fromJson(Map<String, dynamic> json) => Customer(
-        id: json["id"],
-        firstName: json["first_name"],
-        lastName: json["last_name"],
-        email: json["email"],
-        nationalId: json["nationalID"],
-        dialCountryCode: json["dial_country_code"],
-        phone: json["phone"],
-        phoneVerifiedAt: DateTime.parse(json["phone_verified_at"]),
-        isCompleted: json["is_completed"],
-        gender: json["gender"],
-        avatar: Avatar.fromJson(json["avatar"]),
-        iDcard: Avatar.fromJson(json["IDcard"]),
-        addresses: List<dynamic>.from(json["addresses"].map((x) => x)),
-        customerId: json["customer_id"],
-        rate: json["rate"],
-        ordersCnt: json["orders_cnt"],
-        points: json["points"],
-        pointsInSp: json["points_in_sp"],
-      );
+    id: json["id"] ?? 0,
+    firstName: json["first_name"] ?? '',
+    lastName: json["last_name"] ?? '',
+    email: json["email"] ?? '',
+    nationalId: json["nationalID"] ?? '',
+    dialCountryCode: json["dial_country_code"] ?? '',
+    phone: json["phone"] ?? '',
+    phoneVerifiedAt: json["phone_verified_at"] != null
+        ? DateTime.parse(json["phone_verified_at"])
+        : DateTime(1970, 1, 1),
+    isCompleted: json["is_completed"] ?? 0,
+    gender: json["gender"],
+    avatar: json["avatar"] != null
+        ? Avatar.fromJson(json["avatar"])
+        : Avatar(originalUrl: '', mediumUrl: '', smallUrl: '', thumbUrl: ''),
+    iDcard: json["IDcard"] != null
+        ? Avatar.fromJson(json["IDcard"])
+        : Avatar(originalUrl: '', mediumUrl: '', smallUrl: '', thumbUrl: ''),
+    addresses: (json["addresses"] as List?)?.map((x) => x).toList() ?? [],
+    customerId: json["customer_id"] ?? 0,
+    rate: json["rate"] ?? 0,
+    ordersCnt: json["orders_cnt"] ?? 0,
+    points: json["points"] ?? 0,
+    pointsInSp: json["points_in_sp"] ?? 0,
+  );
 
   Map<String, dynamic> toJson() => {
         "id": id,
@@ -255,7 +260,6 @@ class Customer {
         "points": points,
         "points_in_sp": pointsInSp,
       };
-}
 class Avatar {
   String originalUrl;
   String mediumUrl;
