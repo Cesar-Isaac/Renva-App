@@ -1,12 +1,10 @@
-# renvo_app
+# Renva
 
-A new Flutter project.
+The application aims to simplify services for citizens. Users can log in and submit the service they want to be  
+completed. Their request is then displayed to service providers, who respond with offers that include the service price 
+and estimated completion time.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
